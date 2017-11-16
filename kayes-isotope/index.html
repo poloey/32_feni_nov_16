@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+  <style>
+      .container {
+        margin-top: 20px;
+      } 
+    .grid {
+
+    }
+    .grid-item {
+      width: 25%;
+      margin: 10px;
+      padding: 10px;
+      background: salmon;
+      color: white;
+      color: white;
+    }
+    .grid-item.atom{
+      background: salmon;
+    }
+    .grid-item.web {
+      background: teal;
+    }
+    .grid-item.server {
+      background: blue;
+    }
+  </style>
+
+</head>
+<body>
+  <div class="container">
+    <div>
+      <button data-sumon='*' class="btn btn-info">all</button>
+      <button data-sumon='.web' class="btn btn-info">Web</button>
+      <button data-sumon='.server' class="btn btn-info">Server</button>
+      <button data-sumon='.atom' class="btn btn-info">Atom</button>
+    </div>
+    <div class="grid">
+      <div class="grid-item atom">H</div>
+      <div class="grid-item atom">O</div>
+      <div class="grid-item web">Html</div>
+      <div class="grid-item web">css</div>
+      <div class="grid-item atom">Li</div>
+      <div class="grid-item atom">Rd</div>
+      <div class="grid-item server">php</div>
+      <div class="grid-item atom">H</div>
+      <div class="grid-item web">js</div>
+      <div class="grid-item server">Mysql</div>
+    </div>
+  </div>
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="node_modules/isotope-layout/dist/isotope.pkgd.min.js"></script>
+  <script>
+    $grid = $('.grid').isotope({
+      itemSelector: '.grid-item',
+      layoutMode: 'fitRows'
+    });
+    $('button').on('click', function () {
+      $value = $(this).attr('data-sumon');
+      $grid.isotope({ filter: $value });
+    })
+  </script>
+</body>
+</html>
